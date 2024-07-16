@@ -50,9 +50,9 @@ Things you may want to cover:
 | price                         | integer    | null: false |
 | category_id                   | integer    | null: false |
 | item_condition_id             | integer    | null: false |
-| shipping_fee-responsibility_id| integer    | null: false |
+| shipping_fee_responsibility_id| integer    | null: false |
 | prefecture_id                 | integer    | null: false |
-| estimated_shipping-date_id    | integer    | null: false |
+| estimated_shipping_date_id    | integer    | null: false |
 | item_text                     | text       | null: false |
 | user                          | references | null: false, foreign_key: true |
 
