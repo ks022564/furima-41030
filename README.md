@@ -34,8 +34,8 @@ Things you may want to cover:
 | encrypted_password | string   | null: false |
 | first_name         | string   | null: false |
 | last_name          | string   | null: false |
-| first_name(kana)   | string   | null: false |
-| last_name(kana)    | string   | null: false |
+| first_name_kana    | string   | null: false |
+| last_name_kana     | string   | null: false |
 | birthday           | date     | null: false |
 
 ## Association
@@ -44,17 +44,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column                        | Type     | Options     |
-| ------------------------------| ------- -| ----------- |
-| item_name                     | string   | null: false |
-| price                         | integer  | null: false |
-| category-id                   | integer  | null: false |
-| item_condition_id             | integer  | null: false |
-| shipping_fee-responsibility_id| integer  | null: false |
-| shipping_origin-area_id       | integer  | null: false |
-| estimated_shipping-date_id    | integer  | null: false |
-| item_text                     | text     | null: false |
-| user                          |reference | foreign_key: true |
+| Column                        | Type       | Options     |
+| ----------------------------- | ---------- | ----------- |
+| item_name                     | string     | null: false |
+| price                         | integer    | null: false |
+| category_id                   | integer    | null: false |
+| item_condition_id             | integer    | null: false |
+| shipping_fee-responsibility_id| integer    | null: false |
+| prefecture_id                 | integer    | null: false |
+| estimated_shipping-date_id    | integer    | null: false |
+| item_text                     | text       | null: false |
+| user                          | references | null: false, foreign_key: true |
 
 ## association
 - has_one :order
@@ -63,7 +63,7 @@ Things you may want to cover:
 ## orders テーブル
 
 | Column        | Type       | Options                        |
-| ------------ -| ---------- | ------------------------------ |
+| ------------- | ---------- | ------------------------------ |
 | user          | references | null: false, foreign_key: true |
 | item          | references | null: false, foreign_key: true |
 
@@ -75,13 +75,14 @@ Things you may want to cover:
 ## informations テーブル
 
 | Column        | Type       | Options     |
-|-------------- | ---------- | ------------|
+| ------------- | ---------- | ----------- |
 | postal_code   | string     | null: false |
-| prefecture    | string     | null: false |
+| prefecture_id | integer    | null: false |
 | city          | string     | null: false |
 | address       | string     | null: false |
-| building-name | string     |             |
-| phone-number  | string     | null: false |
+| building_name | string     |             |
+| phone_number  | string     | null: false |
+| order         | references | null: false, foreign_key:true |
 
 ## association
 - belongs_to :order
