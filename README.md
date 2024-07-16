@@ -32,11 +32,11 @@ Things you may want to cover:
 | nickname           | string   | null: false |
 | email              | string   | null: false, unique: true |
 | encrypted_password | string   | null: false |
-| first-name         | string   | null: false |
-| last-name          | string   | null: false |
-| first-name(kana)   | string   | null: false |
-| last-name(kana)    | string   | null: false |
-| birthday           | datetime | null: false |
+| first_name         | string   | null: false |
+| last_name          | string   | null: false |
+| first_name(kana)   | string   | null: false |
+| last_name(kana)    | string   | null: false |
+| birthday           | date     | null: false |
 
 ## Association
 - has_many :items
@@ -44,18 +44,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column                        | Type    | Options     |
-| ------------------------------| --------| ----------- |
-| item-name                     | string  | null: false |
-| item-image                    | text    | null: false |
-| price                         | integer | null: false |
-| category                      | string  | null: false |
-| item-condition                | string  | null: false |
-| shipping-fee-responsibility   | string  | null: false |
-| shipping-origin-area          | string  | null: false |
-| estimated-shipping-date       | string  | null: false |
-| item-text                     | text    | null: false |
-| user                          |reference| foreign_key: true |
+| Column                        | Type     | Options     |
+| ------------------------------| ------- -| ----------- |
+| item_name                     | string   | null: false |
+| price                         | integer  | null: false |
+| category-id                   | integer  | null: false |
+| item_condition_id             | integer  | null: false |
+| shipping_fee-responsibility_id| integer  | null: false |
+| shipping_origin-area_id       | integer  | null: false |
+| estimated_shipping-date_id    | integer  | null: false |
+| item_text                     | text     | null: false |
+| user                          |reference | foreign_key: true |
 
 ## association
 - has_one :order
@@ -66,8 +65,7 @@ Things you may want to cover:
 | Column        | Type       | Options                        |
 | ------------ -| ---------- | ------------------------------ |
 | user          | references | null: false, foreign_key: true |
-| room          | references | null: false, foreign_key: true |
-| purchase-date | datetime   | null: false                    |
+| item          | references | null: false, foreign_key: true |
 
 ## association
 - belongs_to :user
@@ -78,7 +76,7 @@ Things you may want to cover:
 
 | Column        | Type       | Options     |
 |-------------- | ---------- | ------------|
-| postal-code   | string     | null: false |
+| postal_code   | string     | null: false |
 | prefecture    | string     | null: false |
 | city          | string     | null: false |
 | address       | string     | null: false |
@@ -86,4 +84,4 @@ Things you may want to cover:
 | phone-number  | string     | null: false |
 
 ## association
--belongs_to :order
+- belongs_to :order
