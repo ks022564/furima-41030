@@ -17,14 +17,14 @@ RSpec.describe Item, type: :model do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
-      end     
+      end
       it '商品名が必須であること' do
-        @item.item_name = " "
+        @item.item_name = ' '
         @item.valid?
         expect(@item.errors.full_messages).to include("Item name can't be blank")
       end
       it '商品の説明が必須であること' do
-        @item.item_text = " "
+        @item.item_text = ' '
         @item.valid?
         expect(@item.errors.full_messages).to include("Item text can't be blank")
       end
@@ -54,24 +54,24 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Estimated shipping date can't be blank")
       end
       it '価格の情報が必須であること' do
-        @item.price = " "
+        @item.price = ' '
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
       it '価格は、¥10,000,000以上は保存できないこと' do
-        @item.price = "10000000"
+        @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it '価格は、¥299以下は保存できないこと' do
-        @item.price = "299"
+        @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it '価格は、半角英数字のみ保存可能であること' do
-        @item.price = "a123"
+        @item.price = 'a123'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
     end
   end
