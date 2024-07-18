@@ -56,7 +56,7 @@ RSpec.describe Item, type: :model do
       it '価格の情報が必須であること' do
         @item.price = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include("Price is invalid")
       end
       it '価格は、¥10,000,000以上は保存できないこと' do
         @item.price = '10000000'
