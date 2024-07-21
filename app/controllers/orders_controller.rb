@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
       @order_form.save
       redirect_to root_path
     else
+      @items = Item.all
       render :index, status: :unprocessable_entity
     end
     
