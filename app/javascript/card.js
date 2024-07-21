@@ -22,6 +22,7 @@ numberElement.mount('#number-form');
       numberElement.clear();
       expiryElement.clear();
       cvcElement.clear();
+      document.getElementById("charge-form").submit();
     });
     e.preventDefault();
   });
