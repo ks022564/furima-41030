@@ -72,7 +72,7 @@ Things you may want to cover:
 - belongs_to :item
 - has-one :information
 
-## informations テーブル
+## order_informations テーブル
 
 | Column        | Type       | Options     |
 | ------------- | ---------- | ----------- |
