@@ -48,9 +48,9 @@ class ItemsController < ApplicationController
   end
 
   def correct_user
-    unless @item.user_id == current_user.id
-      redirect_to root_path
-    end
+    return if @item.user_id == current_user.id
+
+    redirect_to root_path
   end
 
   def set_item
@@ -58,8 +58,8 @@ class ItemsController < ApplicationController
   end
 
   def redirect_if_sold_out
-    if @item.sold_out? 
-      redirect_to root_path
-    end
+    return unless @item.sold_out?
+
+    redirect_to root_path
   end
 end

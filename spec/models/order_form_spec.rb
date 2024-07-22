@@ -23,17 +23,17 @@ RSpec.describe OrderForm, type: :model do
       it '郵便番号が必須であること。' do
         @order_form.postal_code = nil
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Postal code can't be blank")        
+        expect(@order_form.errors.full_messages).to include("Postal code can't be blank")
       end
       it '郵便番号は、「3桁ハイフン4桁」のみ保存可能なこと' do
         @order_form.postal_code = '1234567'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Postal code is invalid. Input correctly.")
+        expect(@order_form.errors.full_messages).to include('Postal code is invalid. Input correctly.')
       end
       it '郵便番号は、半角文字列のみ保存可能なこと' do
         @order_form.postal_code = '１２３４５６７'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Postal code is invalid. Input correctly.")
+        expect(@order_form.errors.full_messages).to include('Postal code is invalid. Input correctly.')
       end
       it '都道府県が必須であること。' do
         @order_form.prefecture_id = nil
@@ -58,7 +58,7 @@ RSpec.describe OrderForm, type: :model do
       it '電話番号は、10桁以上11桁以内の半角数値のみ保存可能なこと' do
         @order_form.phone_number = '0901234567890'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Phone number phone number must be 10 to 11 digits long")
+        expect(@order_form.errors.full_messages).to include('Phone number phone number must be 10 to 11 digits long')
       end
       it 'tokenが空では登録できないこと' do
         @order_form.token = nil
@@ -68,7 +68,7 @@ RSpec.describe OrderForm, type: :model do
       it '電話番号は9桁では登録できないこと' do
         @order_form.phone_number = '090123456'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Phone number phone number must be 10 to 11 digits long")
+        expect(@order_form.errors.full_messages).to include('Phone number phone number must be 10 to 11 digits long')
       end
       it 'user_idが空では登録できないこと' do
         @order_form.user_id = nil
