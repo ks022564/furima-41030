@@ -1,5 +1,6 @@
 const pay = () => {
-  const payjp = Payjp('pk_test_f10295d57700e030152497b1')
+  const publicKey = gon.public_key
+  const payjp = Payjp(publicKey) 
   const elements = payjp.elements();
   const numberElement = elements.create('cardNumber');
   const expiryElement = elements.create('cardExpiry');
@@ -29,3 +30,4 @@ numberElement.mount('#number-form');
 };
 
 window.addEventListener("turbo:load", pay);
+window.addEventListener("turbo:render", pay);
